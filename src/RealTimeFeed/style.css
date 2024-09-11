@@ -1,0 +1,7 @@
+.feed-item {
+    transition: opacity 0.5s ease-out; /* Duration and easing of the fade-out effect */
+}
+
+.fade-out {
+    opacity: 0; /* Make the element invisible */
+}

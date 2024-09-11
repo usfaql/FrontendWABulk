@@ -1,0 +1,28 @@
+.container-nav{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2%;
+    padding-right: 2%;
+    align-items: center;
+    height: 5%;
+    background-color: #2b3d4f;
+    color: #3398db;
+    border-bottom: 1px solid #3398db;
+}
+.title{
+    font-weight: bold;
+    font-size: 24px;
+    user-select: none;
+    cursor: pointer;
+}
+.download-all-data{
+    background-color: #3398db;
+    border: 0;
+    padding: 10px;
+    border-radius: 4px;
+    color: #2c4263;
+}
+.download-all-data a{
+    text-decoration: none;
+    color: #ffffff;
+}

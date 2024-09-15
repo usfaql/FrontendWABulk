@@ -30,7 +30,11 @@ function Dashboard() {
         <div className='container-contribution'>
             <CountryContribution countries={countries} totalNumbers={totalNumbers} />
         </div>
+        <div style={{display:"flex", flexDirection:"column", justifyContent:"start",gap:"5%", alignItems:"center"}}>
         <button className='btn-go-data' onClick={() =>{navigate('/data')}}>show All Data</button>
+        <img style={{width:"60%", borderRadius:"8px", boxShadow:"0px 0px 10px 1px #2b2b2b"}} src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/%D9%85%D9%87%D9%86%D8%AF_%D8%A7%D8%B3%D9%85%D8%A7%D8%B9%D9%8A%D9%84.jpg/903px-%D9%85%D9%87%D9%86%D8%AF_%D8%A7%D8%B3%D9%85%D8%A7%D8%B9%D9%8A%D9%84.jpg'/>
+        </div>
+       
         <RealTimeFeed/>
       </div>
     

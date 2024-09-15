@@ -19,7 +19,7 @@ function Dashboard() {
         }).catch((err) => {
             
         });
-    },[countries]);
+    },[]);
       const totalNumbers = countries?.reduce((acc, country) => acc + country.numbers, 0);
   return (
     <div className='container-dashboard'>

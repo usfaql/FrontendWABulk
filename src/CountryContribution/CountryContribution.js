@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './style.css'
-import Flag from 'react-world-flags'; 
 
 function CountryContribution({ countries, totalNumbers }) {
   const [sortOrder, setSortOrder] = useState('desc');

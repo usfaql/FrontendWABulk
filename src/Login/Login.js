@@ -4,7 +4,7 @@ import { userContext } from "../App";
 import axios from 'axios';
 import "./style.css"
 function Login() {
-  const { setUserId, setToken, setIsLoggedIn } = useContext(userContext);
+  const {setToken, setIsLoggedIn } = useContext(userContext);
   const navigate = useNavigate();
 
   const [username, setUsername] = useState('');
@@ -17,7 +17,6 @@ function Login() {
         axios.post('https://serverwabulk.onrender.com/login', { username, password }).then((result) => {
         const { token, userId } = result.data;
         setToken(token);
-        setUserId(userId);
         setIsLoggedIn(true);
         localStorage.setItem("token", token);
         navigate("/");

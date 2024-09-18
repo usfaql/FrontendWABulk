@@ -2,7 +2,9 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios';
 import './style.css'
 import ReactPaginate from 'react-paginate';
+import { userContext } from "../App"
 function ShowData({selectedCountry , isSidebarVisible, toggleSidebar}) {
+    const { token} = useContext(userContext);
     const [numbers, setNumbers] = useState([]);
     const matchResult = selectedCountry.match(/[a-zA-Z]+$/);
     const country = matchResult ? matchResult[0] : 'DefaultCountry'; 

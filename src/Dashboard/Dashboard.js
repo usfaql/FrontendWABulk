@@ -8,11 +8,13 @@ import RealTimeFeed from '../RealTimeFeed/RealTimeFeed';
 function Dashboard() {
     const navigate = useNavigate();
     const [countries, setCountries] = useState(null);
-    
+     const config = {
+        headers: { Authorization: `Bearer ${token}` }
+    };
 
 
     useEffect(()=>{
-        axios.get(`https://serverwabulk.onrender.com/getcountcountry`).then((result) => {
+        axios.get(`https://serverwabulk.onrender.com/getcountcountry`, config).then((result) => {
             setCountries(result.data.data)
             console.log(result);
             

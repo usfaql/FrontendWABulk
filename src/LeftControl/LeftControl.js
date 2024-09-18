@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import './style.css'
 import axios, { Axios } from 'axios';
+import { userContext } from "../App"
 function LeftControl({onCountrySelect , isSidebarVisible, toggleSidebar}) {
+    const { token} = useContext(userContext);
     const [countryServer, setCountryServer] = useState("");
     const [allCountry, setAllCountry] = useState([]);
     const [commonCountries, setCommonCountries] = useState([]);

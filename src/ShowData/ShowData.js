@@ -10,12 +10,14 @@ function ShowData({selectedCountry , isSidebarVisible, toggleSidebar}) {
     const itemsPerColumn = 4;
     const rowsPerPage = 50;
     const [countShow , setCountShow] = useState(200);
-
+     const config = {
+        headers: { Authorization: `Bearer ${token}` }
+    };
 
    
 
     useEffect(()=>{
-        axios.get(`https://serverwabulk.onrender.com/getnumberbyname/${country}`).then((result) => {
+        axios.get(`https://serverwabulk.onrender.com/getnumberbyname/${country}`,config).then((result) => {
             setNumbers(result.data.data);
             setCountShow(result.data.data.length)
         }).catch((err) => {

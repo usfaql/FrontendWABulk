@@ -247,7 +247,7 @@ const countryCode = {
   return (
     <div className='container-check'>
       <div className='main-check'>
-        <label style={{color: "#3398db", fontWeight:"bold", fontSize:"24px"}}>
+        <label style={{color: "#2b3d4f", fontWeight:"bold", fontSize:"24px"}}>
             ادخل الارقام
         </label>
         <textarea value={inputValue}

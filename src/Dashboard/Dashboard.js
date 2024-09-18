@@ -5,7 +5,9 @@ import CountryContribution from '../CountryContribution/CountryContribution';
 import axios from 'axios';
 import './style.css'
 import RealTimeFeed from '../RealTimeFeed/RealTimeFeed';
+import { userContext } from "../App"
 function Dashboard() {
+        const { token} = useContext(userContext);
     const navigate = useNavigate();
     const [countries, setCountries] = useState(null);
      const config = {

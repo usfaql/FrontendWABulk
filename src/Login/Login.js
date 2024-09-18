@@ -27,7 +27,7 @@ function Login() {
       setAnError(false);
     } catch (error) {
       setAnError(true);
-      console.log(error);
+      console.error("Error during login:", error);
       setContentError(error.response?.data?.message || "An error occurred. Please try again.");
     }
   };

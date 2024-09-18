@@ -1,0 +1,204 @@
+.container-show-data{
+    width: 90%;
+    background-color: #2b3d4f;
+    height: 100%;
+    color: #3398db;
+    overflow-y:auto;
+
+}
+.container-show-data::-webkit-scrollbar {
+    width: 1px; /* Adjust the width as needed */
+}
+
+.container-show-data::-webkit-scrollbar-thumb {
+    background-color: #888; /* Color of the scrollbar thumb */
+    border-radius: 4px; /* Rounded corners for the scrollbar thumb */
+}
+
+.container-show-data::-webkit-scrollbar-track {
+    background-color: #ccc; /* Color of the scrollbar track */
+}
+
+.name-table{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color:#2c4263;
+    color: #ffffff;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    align-items: center;
+}
+tbody{
+    height: 100%;
+}
+.title-country{
+    height: 5%;
+}
+
+/* تصميم الجدول */
+.table-number {
+    width: 100%;
+    border-collapse: collapse; /* إزالة الفراغات بين الخلايا */
+    overflow: auto;
+}
+
+/* تصميم رؤوس الجدول */
+.table-number th {
+    background-color: #2b3d4f;
+    padding: 10px;
+    color: #3398db;
+    border: 1px solid #3398db;
+    text-align: center;
+}
+
+/* تصميم خلايا الجدول */
+.table-number td {
+    padding: 10px;
+    border: 1px solid #3398db;
+    background-color: #1d2833;
+    text-align: center;
+    color: #ffffff;
+}
+
+/* حاوية التمرير */
+.scrollable-container {
+    max-height: 80vh; /* تعديل حسب الحاجة */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* تصميم عنصر التصفح */
+.paginate-sticky {
+    position: sticky;
+    bottom: 0;
+    border-top: 1px solid #3398db;
+    padding: 10px;
+    z-index: 1000;
+    background-color: #2b3d4f;
+
+}
+
+/* تنسيق عنصر التصفح */
+.paginate {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* تصميم عناصر التصفح */
+.paginate li {
+    margin: 0 5px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #3398db;
+    color: #2b3d4f;
+}
+
+.paginate li:hover {
+    background-color: #2c4263;
+    color: #3398db;
+}
+
+.paginate li.active {
+    background-color: #2c4263;
+    font-weight: bold;
+    color: #3398db;
+}
+
+.download-country-data{
+    background-color: #3398db;
+    border: 0;
+    padding: 10px;
+    border-radius: 4px;
+    color: #2c4263;
+}
+.download-country-data a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+input{
+    border: 0;
+    padding: 5px;
+    border-radius: 4px;
+}
+.container-left {
+    width: 25%;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+  }
+  
+
+  /* إخفاء القائمة عند عدم الظهور */
+  .container-left.hidden {
+    transform: translateX(-100%);
+    display: none;
+  }
+  
+  /* عرض القائمة عند النقر على الزر */
+  .container-left.visible {
+    transform: translateX(0);
+  }
+  
+  .data-container {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .toggle-container-left-btn {
+    display: none; 
+    position: sticky;
+    z-index: 10;
+    top: 0;
+    left: 0;
+  }
+.toggle-sidebar-btn{
+    display: none;
+}
+@media only screen and (max-width: 600px) {
+  
+    .container-left {
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 9;
+    }
+    .title-country{
+        width: 25%;
+    }
+    .toggle-container-left-btn {
+        position: fixed;
+        top: 0;
+        display: block;
+    }
+
+    .container-show-data{
+        width: 100% !important; 
+    }
+    .toggle-sidebar-btn{
+        display: block;
+        border: 0;
+        font-weight: bold;
+        background-color: transparent;
+        font-size: 24px;
+        color:#3398db;
+    }
+    .name-table{
+        font-size: 14px;
+    }
+    input{
+        width: 100%;
+    }
+
+    .download-country-data{
+        width: 25%;
+    }
+  }
+
+  

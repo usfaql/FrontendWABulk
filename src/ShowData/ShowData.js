@@ -49,7 +49,29 @@ function ShowData({selectedCountry , isSidebarVisible, toggleSidebar}) {
         }
         
 
+    const downloadCsv = async () => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    };
+    
+    try {
+        const response = await fetch(`https://serverwabulk.onrender.com/download-csv/${selectedCountry}`, config);
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
 
+        // Create a temporary <a> tag to trigger the download
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', `${selectedCountry || 'no'}.csv`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link); // Clean up the link after download
+    } catch (error) {
+        console.error('Error downloading CSV:', error);
+    }
+};
     return (
     <div className='container-show-data'>
         <div className='name-table'>
@@ -62,9 +84,8 @@ function ShowData({selectedCountry , isSidebarVisible, toggleSidebar}) {
             setCountShow(e.target.value)
         }}/></div>
         <div style={{width:"25%"}}>Count : {numbers.length}</div>
-        <button style={{width:"25%"}} className='download-country-data'><a href={`https://serverwabulk.onrender.com/download-csv/${selectedCountry && selectedCountry}`} download="no.csv">
-        Download {selectedCountry}
-        </a></button>
+        <button style={{width:"25%"}} className='download-country-data' onClick={downloadCsv}>
+        Download {selectedCountry}</button>
         </>}
 
         </div>

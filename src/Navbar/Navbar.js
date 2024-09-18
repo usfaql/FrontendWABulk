@@ -34,7 +34,6 @@ function Navbar() {
       </div>
       <button className="download-all-data" onClick={downloadAllCsv}>
         Download All Data
-        </a>
       </button>
     </div>
   )

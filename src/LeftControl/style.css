@@ -1,11 +1,10 @@
 .container-left{
     width: 10%;
-    background-color: #2b3d4f;
+    background-color: #fff;
     height: 100%;
     overflow-y: auto;
-   
-
-    color: #ffffff;
+    color: #2b3d4f;
+    border-right: 1px solid #ededed;
 }
 
 .container-left::-webkit-scrollbar {
@@ -27,7 +26,7 @@
     height: 4%;
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: #3398db;
+    background-color: #ededed;
     color: #2b3d4f;
     position: sticky;
     top: 0;
@@ -54,8 +53,8 @@
     text-align: start;
     width: 100%;
     padding: 5px;
-    background-color: #2c4263;
-    color: #ffffff;
+    background-color: #ededed;
+    color: #2b3d4f;
     border-radius: 4px;
     cursor: pointer;
     user-select: none;
@@ -63,9 +62,9 @@
 }
 
 .ul-code li:hover{
-    background-color: #2b3d4f;
+    background-color: #d6d6d6;
 }
 .ul-code li:active{
-    background-color: #3398db;
-    color: #2b3d4f;
+    background-color: #bdbdbd;
+    color: #ffffff;
 }

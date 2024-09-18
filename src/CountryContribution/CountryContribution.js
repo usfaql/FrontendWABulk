@@ -226,12 +226,12 @@ function CountryContribution({ countries, totalNumbers }) {
     <table className='container-table-country-data'>
       <thead>
         <tr>
-          <th style={{ border: '1px solid #3398db', padding: '8px' }}>Country</th>
-          <th style={{ border: '1px solid #3398db', padding: '8px', cursor: 'pointer' }} onClick={toggleSortOrder}>
+          <th style={{ border: '1px solid #ededed', borderRight:"1px solid #fff", padding: '8px' }}>Country</th>
+          <th style={{ border: '1px solid #ededed', padding: '8px', cursor: 'pointer' ,borderRight:"1px solid #fff"}} onClick={toggleSortOrder}>
             Number of Numbers
             {sortOrder === 'asc' ? ' ↑' : ' ↓'}
           </th>
-          <th style={{ border: '1px solid #3398db', padding: '8px' }}>Contribution (%)</th>
+          <th style={{ border: '1px solid #ededed', padding: '8px' }}>Contribution (%)</th>
         </tr>
       </thead>
       <tbody>
@@ -241,14 +241,14 @@ function CountryContribution({ countries, totalNumbers }) {
 
           return (
             <tr key={index} style={{ overflowY: 'auto' }}>
-               <td style={{ border: '1px solid #3398db', padding: '8px' }}>
+               <td style={{ border: '1px solid #ededed', padding: '8px' }}>
                 {flagUrl && (
                   <img src={flagUrl} alt={country.name} style={{ width: '20px', marginRight: '8px' }} />
                 )}
                 {country.name}
               </td>
-              <td style={{ border: '1px solid #3398db', padding: '8px' }}>{country.numbers.toLocaleString()}</td>
-              <td style={{ border: '1px solid #3398db', padding: '8px' }}>{contribution.toFixed(2)}%</td>
+              <td style={{ border: '1px solid #ededed', padding: '8px' }}>{country.numbers.toLocaleString()}</td>
+              <td style={{ border: '1px solid #ededed', padding: '8px' }}>{contribution.toFixed(2)}%</td>
             </tr>
           );
         })}

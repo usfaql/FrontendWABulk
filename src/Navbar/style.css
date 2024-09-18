@@ -5,9 +5,10 @@
     padding-right: 2%;
     align-items: center;
     height: 5%;
-    background-color: #2b3d4f;
-    color: #3398db;
-    border-bottom: 1px solid #3398db;
+    background-color: #ffffff;
+    color: #2b3d4f;
+
+    border-bottom: 1px solid #ededed;
 }
 .title{
     font-weight: bold;
@@ -16,11 +17,12 @@
     cursor: pointer;
 }
 .download-all-data{
-    background-color: #3398db;
+    background-color: #2b3d4f;
     border: 0;
     padding: 10px;
     border-radius: 4px;
-    color: #2c4263;
+    color: #ffffff;
+    cursor: pointer;
 }
 .download-all-data a{
     text-decoration: none;

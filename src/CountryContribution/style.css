@@ -1,7 +1,6 @@
 .container-table-country-data{
     width: 100%; 
     border-collapse:collapse;
-    background-color: #2c4263;
-    color: #ededed;
-    border-radius: 8px;
+    background-color: #ededed;
+    color: #2b3d4f;
 }

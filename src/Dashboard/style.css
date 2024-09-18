@@ -9,17 +9,17 @@
     scrollbar-width: thin; /* Options: auto, thin, or none */
     scrollbar-color: #888 #ccc; 
     border-radius: 8px;
-    border: 1px solid #3398db;
+    border: 1px solid #ededed;
 }
 .container-goal{
     margin: 20px 1%; 
     text-align: center; 
-    color: rgb(237, 237, 237); 
+    color: #2b3d4f;
     display: flex; 
     flex-direction: column; 
     justify-content: center; 
     align-items: center; 
-    background-color: rgb(44, 66, 99); 
+    background-color: rgb(241, 241, 241); 
     border-radius: 8px;
 
 }
@@ -37,23 +37,25 @@
     width: 25%;
     height: fit-content;
     cursor: pointer;
-    background-color: #3398db;
-    color: #ededed;
+    background-color: #2b3d4f;
+    color: #fff;
     border-radius: 4px;
 }
 
 .welcome{
     font-size: 24px;
     font-weight: bold;
-    color: #ededed;
+    color: #2b3d4f;
+    
     margin-top: 20px;
 }
 
 .container-latest{
     width: 25%;
-    background-color: #2c4263;
+    background-color: #ffffff;
     border-radius: 8px;
-    color:#ededed,
+    border: 1px solid #ededed;
+    color: #2b3d4f,
 }
 @media only screen and (max-width: 600px) {
     .container-dashboard{

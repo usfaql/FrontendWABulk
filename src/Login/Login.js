@@ -13,24 +13,21 @@ function Login() {
   const [anError, setAnError] = useState(false);
   const [contentError, setContentError] = useState("");
 
-  const handleLogin = async () => {
-    try {
-      const response = await axios.post('https://serverwabulk.onrender.com/login', { username, password });
-      const { token, userId } = response.data;
-      
-      setToken(token);
-      setUserId(userId);
-      setIsLoggedIn(true);
-      localStorage.setItem("token", token);
-      
-      navigate("/");
-      setAnError(false);
-    } catch (error) {
-      setAnError(true);
-      console.error("Error during login:", error);
-      setContentError(error.response?.data?.message || "An error occurred. Please try again.");
-    }
+   const handleLogin = async () => {
+      await axios.post('https://serverwabulk.onrender.com/login', { username, password }).then((result) => {
+        const { token, userId } = result.data;
+        setToken(token);
+        setUserId(userId);
+        setIsLoggedIn(true);
+        localStorage.setItem("token", token);
+        navigate("/");
+        setAnError(false);
+      }).catch((err) => {
+        setAnError(true);
+        setContentError(err.response?.data?.message || "An error occurred. Please try again.");
+      });
   };
+
 
   return (
     <div className='main-container-login'>

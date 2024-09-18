@@ -5,9 +5,11 @@ function LeftControl({onCountrySelect , isSidebarVisible, toggleSidebar}) {
     const [countryServer, setCountryServer] = useState("");
     const [allCountry, setAllCountry] = useState([]);
     const [commonCountries, setCommonCountries] = useState([]);
-
+     const config = {
+        headers: { Authorization: `Bearer ${token}` }
+    };
     useEffect(()=>{
-        axios.get('https://serverwabulk.onrender.com/getallcountry').then((result) => {
+        axios.get('https://serverwabulk.onrender.com/getallcountry', config).then((result) => {
             setCountryServer(result.data.data)
         }).catch((err) => {
             console.log(err);

@@ -13,8 +13,8 @@ function Login() {
   const [anError, setAnError] = useState(false);
   const [contentError, setContentError] = useState("");
 
-   const handleLogin = async () => {
-      await axios.post('https://serverwabulk.onrender.com/login', { username, password }).then((result) => {
+   const handleLogin = () => {
+        axios.post('https://serverwabulk.onrender.com/login', { username, password }).then((result) => {
         const { token, userId } = result.data;
         setToken(token);
         setUserId(userId);

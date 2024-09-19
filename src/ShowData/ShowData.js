@@ -3,7 +3,9 @@ import axios from 'axios';
 import './style.css'
 import ReactPaginate from 'react-paginate';
 import { userContext } from "../App"
+import { useNavigate } from 'react-router-dom';
 function ShowData({selectedCountry , isSidebarVisible, toggleSidebar}) {
+    const navigate = useNavigate();
     const { token} = useContext(userContext);
     const [numbers, setNumbers] = useState([]);
     const matchResult = selectedCountry.match(/[a-zA-Z]+$/);
@@ -37,6 +39,10 @@ function ShowData({selectedCountry , isSidebarVisible, toggleSidebar}) {
             }).catch((err) => {
                 console.error(err.response.data.message);
                 setNumbers('');
+                if(err.response.data.code === 2){
+                    localStorage.clear();
+                    navigate("/login")
+                  }
             });
         }
     },[selectedCountry]);

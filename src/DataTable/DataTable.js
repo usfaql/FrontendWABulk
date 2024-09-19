@@ -32,8 +32,7 @@ const DataTable = () => {
         if(cetrruntCategory !== selectedCategory){
             setData([])
         }
-        console.log("requestData =>", requestData);
-      const result = await axios.post("http://localhost:5000/getcollection", requestData, config);
+      const result = await axios.post("https://serverwabulk.onrender.com/getcollection", requestData, config);
       if (result.data.status) {
         const datas = result.data.data;
         setCetrruntCategoryCategory(selectedCategory)
@@ -74,6 +73,7 @@ const DataTable = () => {
         setLoading(false);
       }
     } catch (err) {
+      
       setError('Error fetching data');
       setLoading(false);
     }

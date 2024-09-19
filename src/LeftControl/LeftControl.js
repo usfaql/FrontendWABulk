@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import './style.css';
 import axios from 'axios';
 import { userContext } from "../App";
+import { useNavigate } from 'react-router-dom';
 
 function LeftControl({ onCountrySelect, isSidebarVisible, toggleSidebar }) {
     const { token } = useContext(userContext);
@@ -9,7 +10,7 @@ function LeftControl({ onCountrySelect, isSidebarVisible, toggleSidebar }) {
     const [allCountry, setAllCountry] = useState({});
     const [commonCountries, setCommonCountries] = useState([]);
     const [expandedCategory, setExpandedCategory] = useState(null); // To control which category is expanded
-
+    const navigate = useNavigate();
     const config = {
         headers: { Authorization: `Bearer ${token}` }
     };
@@ -18,7 +19,10 @@ function LeftControl({ onCountrySelect, isSidebarVisible, toggleSidebar }) {
         axios.get('https://serverwabulk.onrender.com/getallcountry', config).then((result) => {
             setCountryServer(result.data.data);
         }).catch((err) => {
-            console.log(err);
+            if(err.response.data.code === 2){
+                localStorage.clear();
+                navigate("/login")
+              }
         });
     }, [token]);
 

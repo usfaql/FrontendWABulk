@@ -19,10 +19,13 @@ function Dashboard() {
     useEffect(()=>{
         axios.get(`https://serverwabulk.onrender.com/getcountcountry`, config).then((result) => {
             setCountries(result.data.data)
-            console.log(result);
+            console.log(result.status);
             
         }).catch((err) => {
-            
+            if(err.response.data.code === 2){
+              localStorage.clear();
+              navigate("/login")
+            }
         });
     },[]);
       const totalNumbers = countries?.reduce((acc, country) => acc + country.numbers, 0);

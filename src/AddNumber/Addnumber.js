@@ -236,9 +236,11 @@ const countryCode = {
         });
         setLoading(true);
         setMessage('');
-        axios.post('https://serverwabulk.onrender.com/save-number', {numbers : processedNumbers}).then((result) => {
+        axios.post('http://localhost:5000/save-number', {numbers : processedNumbers}).then((result) => {
             setMessage(result.data.message || 'تمت إضافة البيانات بنجاح.');
         }).catch((err) => {
+            console.log(err);
+            
             setMessage('حدث خطأ أثناء إضافة الأرقام.');
         }).finally(()=>{
             setLoading(false);

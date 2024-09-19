@@ -1,35 +1,26 @@
-import React, { useEffect, useState,useContext } from 'react'
-import './style.css'
-import axios, { Axios } from 'axios';
-import { userContext } from "../App"
-function LeftControl({onCountrySelect , isSidebarVisible, toggleSidebar}) {
-    const { token} = useContext(userContext);
-    const [countryServer, setCountryServer] = useState("");
-    const [allCountry, setAllCountry] = useState([]);
+import React, { useEffect, useState, useContext } from 'react';
+import './style.css';
+import axios from 'axios';
+import { userContext } from "../App";
+
+function LeftControl({ onCountrySelect, isSidebarVisible, toggleSidebar }) {
+    const { token } = useContext(userContext);
+    const [countryServer, setCountryServer] = useState([]);
+    const [allCountry, setAllCountry] = useState({});
     const [commonCountries, setCommonCountries] = useState([]);
-     const config = {
+    const [expandedCategory, setExpandedCategory] = useState(null); // To control which category is expanded
+
+    const config = {
         headers: { Authorization: `Bearer ${token}` }
     };
-    useEffect(()=>{
+
+    useEffect(() => {
         axios.get('https://serverwabulk.onrender.com/getallcountry', config).then((result) => {
-            setCountryServer(result.data.data)
+            setCountryServer(result.data.data);
         }).catch((err) => {
             console.log(err);
-            
         });
-    },[]);
-
-    
-    const countryClick = (country) =>{
-        onCountrySelect(country)
-        if (window.innerWidth < 768) {
-            toggleSidebar(false);
-          }
-       
-    }
-
-
-
+    }, [token]);
 
     useEffect(() => {
 
@@ -231,18 +222,16 @@ function LeftControl({onCountrySelect , isSidebarVisible, toggleSidebar}) {
             '+998 Uzbekistan'
         ]
 
-      
-    const countryMap = countryData.reduce((acc, item) => {
-        const [code, ...nameParts] = item.split(' ');
-        const name = nameParts.join(' ');
-        acc[name] = code; // Map country name to its code
-        return acc;
+
+        const countryMap = countryData.reduce((acc, item) => {
+            const [code, ...nameParts] = item.split(' ');
+            const name = nameParts.join(' ');
+            acc[name] = code;
+            return acc;
         }, {});
 
         setAllCountry(countryMap);
     }, []);
-
-
 
     useEffect(() => {
         if (Array.isArray(countryServer) && Object.keys(allCountry).length > 0) {
@@ -250,28 +239,248 @@ function LeftControl({onCountrySelect , isSidebarVisible, toggleSidebar}) {
                 name: country,
                 code: allCountry[country]
             }));
+
             setCommonCountries(common);
         }
     }, [countryServer, allCountry]);
 
-    
-    
-  return (
-    <div className={`container-left ${isSidebarVisible ? 'visible' : 'hidden'}`}>
-    
-        <div className='title-left'>Country ({commonCountries?.length})</div>
-        <ul className='ul-code'>
-        {commonCountries.length > 0 ? (
-            commonCountries.map((country, index) => (
-                <li key={index} onClick={()=>{countryClick(country.name)}}>({country.code}) {country.name}</li>
-            ))
-        ) : (
-            <p>No common countries found.</p>
-        )}
-        </ul>
-        
-    </div>
-  )
+    const categoryMap = {
+        "الدول العربية": [
+            "Algeria",
+            "Western-Sahara",
+            "Morocco",
+            "Tunisia",
+            "Libya",
+            "Yemen",
+            "Syria",
+            "Lebanon",
+            "Jordan",
+            "Palestine",
+            "Israel",
+            "Iraq",
+            "Saudi-Arabia",
+            "UAE",
+            "Kuwait",
+            "Qatar",
+            "Oman",
+            "Bahrain",
+            "Egypt",
+            "Sudan",
+            "South-Sudan"
+        ],
+        "الدول الاوروبية": [
+            "Iceland",
+            "Belgium",
+            "Switzerland",
+            "France",
+            "Germany",
+            "Luxembourg",
+            "Italy",
+            "San-Marino",
+            "Vatican",
+            "Spain",
+            "Andorra",
+            "Bulgaria",
+            "Gibraltar",
+            "Ireland",
+            "Albania",
+            "Malta",
+            "Netherlands",
+            "Poland",
+            "Belarus",
+            "Kyrgyzstan",
+            "Ukraine",
+            "Serbia",
+            "Montenegro",
+            "Kosovo",
+            "Croatia",
+            "Slovenia",
+            "Bosnia-and-Herzegovina",
+            "North-Macedonia",
+            "Moldova",
+            "Greece",
+            "Cyprus",
+            "Lithuania",
+            "Latvia",
+            "Estonia",
+            "Finland",
+            "Norway",
+            "Sweden",
+            "Denmark",
+            "United-Kingdom",
+            "Austria",
+            "Slovakia",
+            "Romania",
+            "Hungary",
+            "Czech-Republic"
+        ],
+        "الدول الافريقية": [
+            "Ivory-Coast",
+            "Senegal",
+            "Mali",
+            "Kenya",
+            "Democratic-Republic-of-the-Congo",
+            "Togo",
+            "Liberia",
+            "Ghana",
+            "South-Africa",
+            "Uganda",
+            "Réunion",
+            "Somalia",
+            "Rwanda",
+            "Burundi",
+            "Namibia",
+            "Mauritius",
+            "Sierra-Leone",
+            "Zimbabwe",
+            "Lesotho",
+            "Botswana",
+            "Eswatini",
+            "Cameroon",
+            "Ethiopia",
+            "Tanzania",
+            "Mozambique",
+            "Benin",
+            "Burkina-Faso",
+            "Equatorial-Guinea",
+            "Republic-of-the-Congo",
+            "Madagascar",
+            "Angola",
+            "Guinea-Bissau"
+        ],
+        "الدول الامريكية": [
+            "United-States-and-Canada",
+            "Belize",
+            "Guatemala",
+            "El-Salvador",
+            "Honduras",
+            "Nicaragua",
+            "Costa-Rica",
+            "Panama",
+            "Haiti",
+            "Guadeloupe",
+            "Martinique",
+            "Dutch-Caribbean",
+            "Mexico",
+            "Argentina",
+            "Brazil",
+            "Portugal",
+            "Chile",
+            "Colombia",
+            "Venezuela",
+            "Bolivia",
+            "Guyana",
+            "Ecuador",
+            "French-Guiana",
+            "Paraguay",
+            "Suriname",
+            "Uruguay"
+        ],
+        "اسيا": [
+            "China",
+            "Singapore",
+            "Malaysia",
+            "Indonesia",
+            "Iran",
+            "Afghanistan",
+            "Vietnam",
+            "South-Korea",
+            "Japan",
+            "Tajikistan",
+            "Pakistan",
+            "Australia",
+            "Brunei",
+            "Tonga",
+            "Cook-Islands",
+            "Tokelau",
+            "Sri-Lanka",
+            "Nepal",
+            "India",
+            "Bangladesh",
+            "Nigeria",
+            "Zambia",
+            "Cameroon",
+            "Ethiopia",
+            "Tanzania",
+            "Mozambique",
+            "Mauritius",
+            "Sierra-Leone",
+            "Zimbabwe",
+            "Lesotho",
+            "Botswana",
+            "Eswatini",
+            "New-Zealand",
+            "Macau",
+            "Malawi",
+            "Angola",
+            "Gambia",
+            "Guinea",
+            "Niger",
+            "Republic-of-the-Congo",
+            "Madagascar",
+            "East Timor",
+            "Maldives",
+            "Benin",
+            "Laos",
+            "Rwanda",
+            "Burundi",
+            "Namibia",
+            "Saint-Helena",
+            "Azerbaijan",
+            "Burkina-Faso",
+            "Equatorial-Guinea",
+            "Slovakia",
+            "Romania",
+            "Gabon",
+            "Central-African-Republic",
+            "Peru",
+            "Hungary",
+            "Taiwan",
+            "Myanmar",
+            "Djibouti",
+            "Cambodia",
+            "Mongolia",
+            "Cuba",
+            "Czech-Republic",
+            "Seychelles",
+            "Guinea-Bissau",
+            "Uzbekistan"
+        ]
+    };
+
+    const handleCategoryClick = (category) => {
+        setExpandedCategory(expandedCategory === category ? null : category); // Toggle the expanded state
+    };
+
+    const countryClick = (country) => {
+        onCountrySelect(country);
+        if (window.innerWidth < 768) {
+            toggleSidebar(false);
+        }
+    };
+
+    return (
+        <div className={`container-left ${isSidebarVisible ? 'visible' : 'hidden'}`}>
+            <div className='title-left'>Country ({commonCountries.length})</div>
+            <button onClick={() => countryClick("all")}>عرض جميع الدول</button>
+            <ul className='ul-code'>
+                {Object.keys(categoryMap).map(category => (
+                    <li key={category} onClick={() => handleCategoryClick(category)}>
+                            {category}
+                        {expandedCategory === category && (
+                            <ul className='ul-code'>
+                                {commonCountries.filter(country => categoryMap[category].includes(country.name)).map((country, index) => (
+                                    <li key={index} onClick={() => countryClick(country.name)}>
+                                        ({country.code}) {country.name}
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
 }
 
-export default LeftControl
+export default LeftControl;

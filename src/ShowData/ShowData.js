@@ -19,13 +19,26 @@ function ShowData({selectedCountry , isSidebarVisible, toggleSidebar}) {
    
 
     useEffect(()=>{
-        axios.get(`https://serverwabulk.onrender.com/getnumberbyname/${country}`,config).then((result) => {
-            setNumbers(result.data.data);
-            setCountShow(result.data.data.length)
-        }).catch((err) => {
-            console.error(err.response.data.message);
-            setNumbers('');
-        });
+        if(selectedCountry === "all"){
+            axios.get(`http://localhost:5000/getall?page=${currentPage}&limit=2000000`,config).then((result) => {
+                setNumbers(result.data.data);
+                setCountShow(result.data.data.length);
+                console.log("test=>", result);
+                
+            }).catch((err) => {
+                console.error(err.response.data.message);
+                setNumbers('');
+                
+            });
+        }else{
+            axios.get(`https://serverwabulk.onrender.com/getnumberbyname/${country}`,config).then((result) => {
+                setNumbers(result.data.data);
+                setCountShow(result.data.data.length)
+            }).catch((err) => {
+                console.error(err.response.data.message);
+                setNumbers('');
+            });
+        }
     },[selectedCountry]);
        
 

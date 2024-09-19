@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route, Routes, useLocation, Navigate } from 'r
 import Login from './Login/Login';
 import Spreadsheet from './Spreadsheet/Spreadsheet';
 import Addnumber from './AddNumber/Addnumber';
+import DataTable from './DataTable/DataTable';
 export const userContext = createContext();
 function PrivateRoute({ element, isLoggedIn }) {
   return isLoggedIn ? element : <Navigate to="/login" />;
@@ -36,6 +37,8 @@ function App() {
           <Route path="/data" element={<PrivateRoute element={<Home />} isLoggedIn={isLoggedIn} />} />
           <Route path="/spreadsheet" element={<PrivateRoute element={<Spreadsheet/>} isLoggedIn={isLoggedIn} />} />
           <Route path="/add-number" element={<PrivateRoute element={<Addnumber/>} isLoggedIn={isLoggedIn} />} />
+          <Route path="/sheet" element={<PrivateRoute element={<DataTable/>} isLoggedIn={isLoggedIn} />} />
+
         </Routes>
         
       </div>

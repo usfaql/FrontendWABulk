@@ -51,7 +51,7 @@ function RealTimeFeed() {
 
     return (
         <div className='container-latest'>
-            <h2 style={{color:"#2b3d4f", borderBottom:"1px solid #ededed", paddingTop:"20px",paddingBottom:"20px", margin:"0"}}>Latest Additions Feed</h2>
+            <h2 style={{color:"#fff", borderBottom:"1px solid #303030", paddingTop:"20px",paddingBottom:"20px", margin:"0"}}>Latest Additions Feed</h2>
             <div style={{ maxHeight: '300px', overflowY: 'scroll' }}>
                 {feed?.map((item) => (
                     <div 

@@ -10,7 +10,7 @@ function Goal({ totalNumbers, goal = 1000000 }) {
         <div style={{
           width: `${percentage}%`,
           height: '100%',
-          backgroundColor: '#4caf50',
+          backgroundColor: '#2986ff',
           borderRadius: '10px',
           transition: 'width 0.3s'
         }} />

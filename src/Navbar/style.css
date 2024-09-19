@@ -5,8 +5,8 @@
     padding-right: 2%;
     align-items: center;
     height: 5%;
-    background-color: #ffffff;
-    color: #2b3d4f;
+    background-color: #1e1f24;
+    color: #2986ff;
 
     border-bottom: 1px solid #ededed;
 }
@@ -17,7 +17,7 @@
     cursor: pointer;
 }
 .download-all-data{
-    background-color: #2b3d4f;
+    background-color: #2986ff;
     border: 0;
     padding: 10px;
     border-radius: 4px;

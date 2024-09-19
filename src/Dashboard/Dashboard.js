@@ -6,6 +6,8 @@ import axios from 'axios';
 import './style.css'
 import RealTimeFeed from '../RealTimeFeed/RealTimeFeed';
 import { userContext } from "../App"
+
+
 function Dashboard() {
     
     const navigate = useNavigate();
@@ -29,7 +31,11 @@ function Dashboard() {
         });
     },[]);
       const totalNumbers = countries?.reduce((acc, country) => acc + country.numbers, 0);
-  return (
+  
+  
+  
+  
+      return (
     <div className='container-dashboard'>
       <div className='welcome'>Welcome To WABulk</div>
       

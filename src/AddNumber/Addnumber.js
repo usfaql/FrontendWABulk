@@ -249,7 +249,7 @@ const countryCode = {
   return (
     <div className='container-check'>
       <div className='main-check'>
-        <label style={{color: "#2b3d4f", fontWeight:"bold", fontSize:"24px"}}>
+        <label style={{color: "#2986ff", fontWeight:"bold", fontSize:"24px"}}>
             ادخل الارقام
         </label>
         <textarea value={inputValue}
@@ -266,7 +266,7 @@ const countryCode = {
         ))}
       </div>
       {message && (
-        <div className='message'>
+        <div className='message' style={{color:"#2986ff"}}>
           <p>{message}</p>
         </div>
       )}

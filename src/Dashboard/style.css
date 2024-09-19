@@ -6,20 +6,20 @@
     overflow-y: auto;
     width: 25%;
     height: 100%;
-    scrollbar-width: thin; /* Options: auto, thin, or none */
-    scrollbar-color: #888 #ccc; 
+    scrollbar-width: thin; 
+    scrollbar-color: #303030 #808080; 
     border-radius: 8px;
-    border: 1px solid #ededed;
+    border: 1px solid #303030;
 }
 .container-goal{
-    margin: 20px 1%; 
-    text-align: center; 
-    color: #2b3d4f;
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
-    background-color: rgb(241, 241, 241); 
+    margin: 20px 1%;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #1e1f24; 
     border-radius: 8px;
 
 }
@@ -37,25 +37,26 @@
     width: 25%;
     height: fit-content;
     cursor: pointer;
-    background-color: #2b3d4f;
+    background-color: #2986ff;
     color: #fff;
     border-radius: 4px;
+
 }
 
 .welcome{
     font-size: 24px;
     font-weight: bold;
-    color: #2b3d4f;
+    color: #2986ff;
     
     margin-top: 20px;
 }
 
 .container-latest{
     width: 25%;
-    background-color: #ffffff;
+    background-color: #1e1f24;
     border-radius: 8px;
-    border: 1px solid #ededed;
-    color: #2b3d4f,
+    border: 1px solid #303030;
+    color: #fff,
 }
 @media only screen and (max-width: 600px) {
     .container-dashboard{

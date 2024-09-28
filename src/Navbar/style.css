@@ -17,6 +17,7 @@
     cursor: pointer;
 }
 .download-all-data{
+    display: none;
     background-color: #2986ff;
     border: 0;
     padding: 10px;

@@ -113,9 +113,8 @@ const DataTable = () => {
             <div className="data-row" key={index}>
               <div className="data-cell country">{row.country} ({row.totalCount})</div>
               {row.numbers.map((number, idx) => {
-                // حساب لون الخلفية بناءً على مجموعة الرقم
                 const groupIndex = Math.floor(idx / 200);
-                const backgroundColor = backgroundColors[groupIndex % backgroundColors.length]; // استخدام الألوان المتاحة بالتناوب
+                const backgroundColor = backgroundColors[groupIndex % backgroundColors.length]; 
                 return (
                   <div 
                     key={idx}

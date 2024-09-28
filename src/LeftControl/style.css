@@ -1,6 +1,6 @@
 .container-left{
     width: 10%;
-    background-color: #fff;
+    background-color: #17181c;
     height: 100%;
     overflow-y: auto;
     color: #2b3d4f;
@@ -26,35 +26,55 @@
     height: 4%;
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: #ededed;
-    color: #2b3d4f;
+    background-color: #17181c;
+    color: #2986ff;
     position: sticky;
+    border-bottom: 1px solid #2986ff;
     top: 0;
     align-items: center;
     text-align: center;
     justify-content: center;
     cursor: default;
 }
-.ul-code{
-    padding-left: 10px;
-    padding-right: 10px;
+.ul-code-main {
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    align-items: center;
+    justify-content: center; /* Center items vertically if needed */
+    align-items: center;     /* Center items horizontally */
     width: 85%;
-    margin: 0;
+    margin: 10px auto;      /* Center the ul-code within its parent */
     list-style: none;
     gap: 5px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px 0;        /* Top and bottom padding */
+}
+.ul-code-main li{
+    text-align: start;
+    width: 100%;
+    padding: 5px;
+    background-color: #1e1f24;
+    color: #2986ff;
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+    font-weight: bold;
+}
+.ul-code {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center items vertically if needed */
+    align-items: center;     /* Center items horizontally */
+    width: 95%;
+    margin: 5px auto;      /* Center the ul-code within its parent */
+    list-style: none;
+    gap: 5px;
+    padding: 10px 0;        /* Top and bottom padding */
 }
 .ul-code li{
     text-align: start;
     width: 100%;
     padding: 5px;
-    background-color: #ededed;
-    color: #2b3d4f;
+    background-color: #17181c;
+    color: #2986ff;
     border-radius: 4px;
     cursor: pointer;
     user-select: none;
@@ -62,7 +82,7 @@
 }
 
 .ul-code li:hover{
-    background-color: #d6d6d6;
+    background-color: #0d0d0f;
 }
 .ul-code li:active{
     background-color: #bdbdbd;

@@ -466,8 +466,7 @@ function LeftControl({ onCountrySelect, isSidebarVisible, toggleSidebar }) {
     return (
         <div className={`container-left ${isSidebarVisible ? 'visible' : 'hidden'}`}>
             <div className='title-left'>Country ({commonCountries.length})</div>
-            <button onClick={() => countryClick("all")}>عرض جميع الدول</button>
-            <ul className='ul-code'>
+            <ul className='ul-code-main'>
                 {Object.keys(categoryMap).map(category => (
                     <li key={category} onClick={() => handleCategoryClick(category)}>
                             {category}

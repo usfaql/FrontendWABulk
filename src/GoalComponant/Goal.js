@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Goal({ totalNumbers, goal = 1000000 }) {
+function Goal({ totalNumbers, goal = 2000000 }) {
   const percentage = (totalNumbers / goal) * 100;
 
   return (

@@ -4,6 +4,7 @@ import './style.css'
 import ReactPaginate from 'react-paginate';
 import { userContext } from "../App"
 import { useNavigate } from 'react-router-dom';
+
 function ShowData({selectedCountry , isSidebarVisible, toggleSidebar}) {
     const navigate = useNavigate();
     const { token} = useContext(userContext);
@@ -17,10 +18,13 @@ function ShowData({selectedCountry , isSidebarVisible, toggleSidebar}) {
      const config = {
         headers: { Authorization: `Bearer ${token}` }
     };
+    const [loading, setLoading] = useState(false);
 
+    
    
-
     useEffect(()=>{
+        setLoading(true);
+        setNumbers([]);
         if(selectedCountry === "all"){
             axios.get(`http://localhost:5000/getall?page=${currentPage}&limit=2000000`,config).then((result) => {
                 setNumbers(result.data.data);
@@ -43,6 +47,8 @@ function ShowData({selectedCountry , isSidebarVisible, toggleSidebar}) {
                     localStorage.clear();
                     navigate("/login")
                   }
+            }).finally(()=>{
+                setLoading(false)
             });
         }
     },[selectedCountry]);
@@ -108,49 +114,59 @@ function ShowData({selectedCountry , isSidebarVisible, toggleSidebar}) {
         </>}
 
         </div>
-      
-    
-      {numbers.length > 0 ? (
-                <>
-                    <table className='table-number'>
-                        <thead>
-                            <tr>
-                                {columns.map((_, colIndex) => (
-                                    <th key={colIndex}>No {colIndex + 1}</th>
-                                ))}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {Array.from({ length: rowsPerPage }).map((_, rowIndex) => (
-                                <tr key={rowIndex}>
-                                    {columns.map((column, colIndex) => (
-                                        column[rowIndex] && <>
-                                            <td key={colIndex}>
-                                            {column[rowIndex].number}
-                                            </td>
-                                        </>
-                                    ))}
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                    <div className='paginate-sticky'>
-                        <ReactPaginate
-                            previousLabel={'<-'}
-                            nextLabel={'->'}
-                            breakLabel={'...'}
-                            pageCount={pageCount}
-                            marginPagesDisplayed={2}
-                            pageRangeDisplayed={3}
-                            onPageChange={handlePageClick}
-                            containerClassName={'paginate'}
-                            activeClassName={'active'}
-                        />
-                    </div>
-                </>
+        {selectedCountry ? (
+                loading ? (
+                    <div class="loader"></div>
+                ) : (
+                    numbers.length > 0 ? (
+                            <>
+                                <table className='table-number'>
+                                    <thead>
+                                        <tr>
+                                            {columns.map((_, colIndex) => (
+                                                <th key={colIndex}>No {colIndex + 1}</th>
+                                            ))}
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {Array.from({ length: rowsPerPage }).map((_, rowIndex) => (
+                                            <tr key={rowIndex}>
+                                                {columns.map((column, colIndex) => (
+                                                    column[rowIndex] && <>
+                                                        <td key={colIndex}>
+                                                        {column[rowIndex].number}
+                                                        </td>
+                                                    </>
+                                                ))}
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                                <div className='paginate-sticky'>
+                                    <ReactPaginate
+                                        previousLabel={'<-'}
+                                        nextLabel={'->'}
+                                        breakLabel={'...'}
+                                        pageCount={pageCount}
+                                        marginPagesDisplayed={2}
+                                        pageRangeDisplayed={3}
+                                        onPageChange={handlePageClick}
+                                        containerClassName={'paginate'}
+                                        activeClassName={'active'}
+                                    />
+                                </div>
+                            </>
+                    
+                    ) : (
+                        <p>No numbers available for the selected country.</p>
+                    )
+                )
             ) : (
-                <p>No numbers available for the selected country.</p>
+                <p>Please select a country.</p>
             )}
+    
+      
+             
     </div>
   )
 }

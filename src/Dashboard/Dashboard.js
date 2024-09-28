@@ -45,9 +45,9 @@ function Dashboard() {
             <CountryContribution countries={countries} totalNumbers={totalNumbers} />
         </div>
         <div style={{display:"flex", flexDirection:"column", justifyContent:"start",gap:"5%", alignItems:"center",width: "50%"}}>
-        {/*<button className='btn-go-data' onClick={() =>{navigate('/data')}}>عرض الارقام</button>*/}
+        <button className='btn-go-data' onClick={() =>{navigate('/data')}}>عرض الارقام</button>
         <button className='btn-go-data' onClick={() =>{navigate('/add-number')}}>اضافة ارقام</button>
-        <button className='btn-go-data' onClick={() =>{navigate('/sheet')}}>جدول البيانات</button>
+        {/*<button className='btn-go-data' onClick={() =>{navigate('/sheet')}}>جدول البيانات</button>*/}
 
         </div>
        

@@ -17,7 +17,7 @@ function Navbar() {
     };
     
     try {
-      const response = await fetch("https://serverwabulk.onrender.com/download-csv", config);
+      const response = await fetch("http://localhost:5000/download-csv", config);
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
 

@@ -273,7 +273,7 @@ function LeftControl({ onCountrySelect, isSidebarVisible, toggleSidebar }) {
             "South-Sudan"
         ],
         "الدول الاوروبية": [
-            '+90 Turkey',
+            'Turkey',
             "Iceland",
             "Belgium",
             "Switzerland",
@@ -320,7 +320,7 @@ function LeftControl({ onCountrySelect, isSidebarVisible, toggleSidebar }) {
             "Czech-Republic"
         ],
         "الدول الافريقية": [
-            '+222 Mauritania',
+            'Mauritania',
             "Ivory-Coast",
             "Senegal",
             "Mali",
